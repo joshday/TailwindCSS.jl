@@ -1,5 +1,4 @@
 using TailwindCSS
-using Cobweb: h, Page
 using Test
 
 "text-xl"  # Tailwind CLI should write this CSS into it's output
