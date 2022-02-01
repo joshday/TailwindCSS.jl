@@ -13,5 +13,5 @@ using Test
 
     TailwindCSS.minify(input, output, config)
 
-    @test any(x -> occursin("text-xl", x), eachline(output))
+    @test occursin("text-xl", read(output, String))
 end

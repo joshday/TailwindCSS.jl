@@ -40,6 +40,18 @@ cli = joinpath(artifact_path(tailwindcli_hash), "tailwindcli")
 help() = run(`$cli -h`)
 
 #-----------------------------------------------------------------------------# init
+"""
+    init(file::String)
+    init(file::String, config::AbstractDict)
+
+Create a `tailwind.config.js` file, optionally using entries in `config`.
+
+# Example
+
+    using TailwindCSS: init
+
+    init("tailwind.config.js", Dict("content" => ["*.html", "*.js"]))
+"""
 function init(file::String = "")
     args = [cli, "init"]
     !isempty(file) && push!(args, file)
@@ -53,8 +65,15 @@ function init(file::String, config::AbstractDict)
 end
 
 #-----------------------------------------------------------------------------# minify
+"""
+    minify(inputfile, outputfile, config)
+
+Write a minified CSS file `outputfile` based on `inputfile` and `config`.
+
+- `config` can be a `String` (path to tailwind.config.js) or an `AbstractDict` (see `TailwindCSS.init`).
+"""
 function minify(input::String, output::String, config::String)
-    args = [cli, "--input", input, "--output", output, "--config", config]
+    args = [cli, "--input", input, "--output", output, "--config", config, "--minify"]
     run(`$args`)
 end
 
@@ -63,18 +82,5 @@ function minify(input::String, output::String, config::AbstractDict)
     config = init(file, config)
     minify(input, output, file)
 end
-
-
-
-# function minify(input::String, output::String; config=nothing)
-#     args = [tailwindcli, "--input", input, "--output", output]
-#     if !isnothing(config)
-#         dir = dirname(output)
-
-#         push!(args, "--config", config)
-#     end
-#     run(`$args`)
-# end
-
 
 end
