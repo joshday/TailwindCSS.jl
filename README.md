@@ -1,3 +1,5 @@
+[![CI](https://github.com/joshday/TailwindCSS.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/joshday/TailwindCSS.jl/actions/workflows/CI.yml)
+
 <h1 align="center">TailwindCSS</h1>
 
 
