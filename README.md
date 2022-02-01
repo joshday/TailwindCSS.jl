@@ -12,22 +12,21 @@
     init(file::String)
     init(file::String, config::AbstractDict)
 
-    Create a tailwind.config.js file, optionally using entries in config.
+Create a tailwind.config.js file, optionally using entries in config.
 
-    Example
-    ≡≡≡≡≡≡≡≡≡
-
+```julia
     using TailwindCSS: init
 
     init("tailwind.config.js", Dict("content" => ["*.html", "*.js"]))
+```
 
 ### `minify`
 
     minify(inputfile, outputfile, config)
 
-    Write a minified CSS file outputfile based on inputfile and config.
+Write a minified CSS file (`outputfile`) based on `inputfile` (.css) and `config` (tailwind.config.js).
 
-        •  config can be a String (path to tailwind.config.js) or an AbstractDict (see TailwindCSS.init).
+- `config` can be a `String` (path to tailwind.config.js) or an `AbstractDict` (see `TailwindCSS.init`).
 
 
 ## Manually using the CLI
